@@ -1,0 +1,51 @@
+nome do banco de dados: novaBDsi;
+tabelas:
+  - chamados;
+  - dbfunc;
+  - comentarios
+
+
+
+Estrutura do dbchamado:
+CAMPO                       | TIPO         | NULL |
+----------------------------+--------------+------+
+numero                      | smallint(10) | NO   |
+nome                        | varchar(30)  | NO   |
+email                       | varchar(30)  | NO   |
+ramal                       | varchar(30)  | NO   |
+sala                        | varchar(4)   | NO   |
+setor                       | varchar(10)  | NO   |
+
+solicitacao                 | text         | NO   |
+tipo                        | tinyint(1)   | NO   |
+status                      | tinyint(1)   | NO   |
+data                        | datetime     | NO   |
+patrimonio                  | varchar(8)   | NO   |
+atendimento_na_ausencia     | tinyint(1)   | NO   |
+horario_preferencial        | varchar(255) | YES  |
+
+Estrutura do dbfunc:
+CAMPO | TIPO        | NULL |
+------+-------------+------+
+nome  | VARCHAR(20) | NO   |
+senha | VARCHAR(32) | NO   |
+cor | VARCHAR(20) | NO   |
+obs: senha *tem* que ser VARCHAR(32) pq ta em md5;
+
+Estrutura do dbcomment:
+CAMPO                       | TIPO         | NULL |
+----------------------------+--------------+------+
+id                          |id auto       |
+numCht                      |smallint(10)  |
+user                        | varchar(30)  |
+comment                     |   text       |
+
+Sistema de comentario/log de cada chamado
+cada comentario é uma linha. Se consegue o log ao fazer SELECT * FROM comentarios WHERE numCht==vrau
+
+Ainda a ser implementado:
+Estrutura do dbtag:
+CAMPO                       | TIPO         | NULL |
+id                          |id auto       |not   |
+numCht                      |smallint(10)  |not   |
+tag                         |text          |not   |
