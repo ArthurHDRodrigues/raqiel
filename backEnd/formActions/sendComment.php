@@ -1,6 +1,6 @@
 <?php
-include "../inc/mysql_stuff.php";
-include "../inc/classes.php";
+include __DIR__."./../mysqlAPI/commentCommands/submitComment.php";
+include __DIR__."/../../Classes/comment/commentModel.php";
 
 $numCht = $_POST['numCht'];
 $tecnico = $_POST['tecnico'];
@@ -10,6 +10,6 @@ $comment = new commentModel(['',$numCht,$tecnico,$entrada]);
 submitComment($comment);
 
 
-header('Location: index.php');
+header('Location: ../../adm/index.php');
 exit();
 ?>

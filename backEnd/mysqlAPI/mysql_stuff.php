@@ -6,7 +6,7 @@
 
 function submitCht($cht){
   /*
-  Recebe um objeto da classe cht e o insere no banco de dados informado no variaveis.inc.php
+  Recebe um objeto da classe cht e o insere no banco de dados informado no config.php
   */
 
   $today = getdate();
@@ -25,16 +25,16 @@ function getCht($status = [], $tel = False, $note = False){
   */
 
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
+  require "../inc/config.php";
 
   if($status == []){
       $sql = "SELECT * FROM ". $db_cht." WHERE status != 2";
       if($tel AND $note){
-        $sql = $sql." WHERE tipo = 3";
+        $sql = $sql." AND tipo = 3";
       }
       else{
-        if($note) $sql = $sql." WHERE tipo = 1";
-        if($tel) $sql = $sql." WHERE tipo = 2";
+        if($note) $sql = $sql." AND tipo = 1";
+        if($tel) $sql = $sql." AND tipo = 2";
       }
     }
   else{
@@ -58,6 +58,7 @@ function getCht($status = [], $tel = False, $note = False){
       }
     }
     }
+
     $sql_result = mysqli_query($connection, $sql) or die ("Nao foi possivel extrair os dados");
 
   $return = array();
@@ -74,7 +75,7 @@ function checkLogin($user,$passwd){
   false, caso contrario
   */
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
+  require "../inc/config.php";
   $query="SELECT nome FROM ".$db_func." WHERE nome='$user' and senha= '$passwd'";
   if(mysqli_num_rows(mysqli_query($connection, $query)) != 0){
      $return = True;
@@ -87,7 +88,7 @@ function checkLogin($user,$passwd){
 
 function submitComment($comment){
   /*
-  Recebe um objeto da comment e o insere no banco de dados informado no variaveis.inc.php
+  Recebe um objeto da comment e o insere no banco de dados informado no config.php
   */
 
   $today = getdate();
@@ -103,7 +104,7 @@ function submitComment($comment){
 function getComments($numCht){
 
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
+  require "../inc/config.php";
   $query="SELECT * FROM ".$db_comment." WHERE numCht=".$numCht;
   $sql_result = mysqli_query($connection, $query) or die ("Nao foi possivel extrair os dados");
 
@@ -118,15 +119,15 @@ function getComments($numCht){
 
 function changeStatus($numCht,$status){
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
-  $sql = "UPDATE ". $db_cht ." SET status = ". $status ." WHERE id = ".$numCht;
+  require "../inc/config.php";
+  $sql = "UPDATE ". $db_cht ." SET status = ". $status ." WHERE numero = ".$numCht;
   mysqli_query($connection, $sql) or die ("Nao foi possivel enviar os dados");
 
 }
 
 function updatePasswd($nome, $newPasswd){
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
+  require "../inc/config.php";
   $sql = "UPDATE ". $db_func ." SET senha = '". md5($newPasswd) ."' WHERE nome = '".$nome."'";
   echo $sql;
   mysqli_query($connection, $sql) or die ("Nao foi possivel enviar os dados");
@@ -134,16 +135,15 @@ function updatePasswd($nome, $newPasswd){
 
 function addTec($nome,$passwd){
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
-  $sql = "INSERT INTO ". $db_func ." VALUES('".$nome."','". md5($passwd) ."','#000000')";
+  require "../inc/config.php";
+  $sql = "INSERT INTO ". $db_func ." VALUES(DEFAULT,'".$nome."','". md5($passwd) ."')";
   mysqli_query($connection, $sql) or die ("Nao foi possivel enviar os dados");
 }
 
 function getTec(){
   require "../inc/connect.inc.php";
-  require "../inc/variaveis.inc.php";
+  require "../inc/config.php";
   $sql = "SELECT nome FROM ". $db_func;
-  #$sql = "INSERT INTO ". $db_func ." VALUES('".$nome."','". md5($passwd) ."','#000000')";-->
   $sql_result = mysqli_query($connection, $sql) or die ("Nao foi possivel enviar os dados");
   return $sql_result;
 }

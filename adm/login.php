@@ -8,10 +8,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
-<body><center>
-  <h3>IME/USP<br>Login para o sistema de Controle de Chamados Técnicos</h3>
-
-  <div class="container">
+<body>
+  <div class='container rounded bolder border-dark'>
+    <div class="row justify-content-md-center">
+	<div class="col">
+	<h3>IME/USP<br>Login para o sistema de Controle de Chamados Técnicos</h3>
+	</div>
+    </div>
     <div class="row">
       <div class="col">
       </div>
@@ -33,7 +36,6 @@
   <div class="col">
   </div>
 </div></div>
-
-</center></body>
+</body>
 
 </html>

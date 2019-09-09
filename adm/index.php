@@ -1,7 +1,15 @@
 <?php
-include "../inc/mysql_stuff.php";
-include "../inc/connect.inc.php";
-include "../inc/classes.php";
+include "../backEnd/mysqlAPI/tecnicoCommands/checkLogin.php";
+include "../Classes/cht/chtController.php";
+include "../backEnd/mysqlAPI/chtCommands/getCht.php";
+include "../Classes/searchToken/searchTokenVisual.php";
+include "../Classes/cht/chtVisual.php";
+require "../backEnd/connect.inc.php";
+require '../Classes/comment/commentVisual.php';
+require "../backEnd/mysqlAPI/commentCommands/getComment.php";
+include "../Classes/comment/commentModel.php";
+require "../Classes/tecnico/tecnicoModel.php";
+require "../Classes/tecnico/tecnicoVisual.php";
 
 if(isset($_POST['user']) && isset($_POST['passwd'])){
   if(checkLogin($_POST['user'],md5($_POST['passwd']))){
@@ -17,9 +25,11 @@ if(isset($_POST['user']) && isset($_POST['passwd'])){
 }
 else{
   if(isset($_COOKIE['user']) && isset($_COOKIE['passwd'])) {
-    if(checkLogin($_COOKIE['user'],$_COOKIE['passwd'])== False){
+    if(checkLogin($_COOKIE['user'],$_COOKIE['passwd'])){
       $tecnico = $_COOKIE['user'];
       $passwd = $_COOKIE['passwd'];
+    }
+    else{
       header('Location: login.php');
       exit();
     }
@@ -29,6 +39,9 @@ else{
     exit();
   }
 }
+      $_SESSION["user"] = $tecnico;
+      $_SESSION["passwd"] = $passwd;
+
       $list = [];
       $tel = False;
       $note = False;
@@ -89,14 +102,12 @@ else{
       <center><h2>Lista De Coisas a fazer</h2></center>
       <h3> Melhorias do Sistema de Chamado </h3>
       <ul>
+	<li>Evitar injeção do lado do usuario</li>
         <li>Sistema de email</li>
-        <li>sistema de mudar tel<=>note</li>
         <li>sistema de filtro automatico</li>
         <li>sistema de tag</li>
           warsaw
       <li>sistema prioridade</li>
-      <li>classes:</li>
-                  tecnico;
       <li>limpar código</li>
       <li>fazer caber mais cht em tela</li>
       <li>migrar p sistema de icones do bootstra(https://getbootstrap.com/docs/3.3/components/)</li>
@@ -119,12 +130,12 @@ else{
 
       $n = sizeof($chamados);
       for($i = 0 ; $i < $n ; $i++){
-        $chtVisual->printCht($chamados[$i],$_COOKIE['user']);
+        $chtVisual->printCht($chamados[$i],$_SESSION["user"]);
       }?>
   </div>
   <div class="tab-pane fade" id="senha" role="tabpanel" aria-labelledby="senha">
     <?php
-    $ModelTec = new tecnicoModel($_COOKIE['user'],$passwd);
+    $ModelTec = new tecnicoModel($_SESSION["user"],$passwd);
     $VisualTec = new tecnicoVisual();
     $VisualTec->printTecnicoSection($ModelTec);
     ?>

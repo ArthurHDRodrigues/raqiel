@@ -1,6 +1,6 @@
 <?php
 
-require "../inc/mysql_stuff.php";
+require "../mysqlAPI/chtCommands/updateStatus.php";
 
 $input = $_POST['status'];
 $numCht = $_POST['numCht'];
@@ -22,6 +22,6 @@ switch($input){
 
 
 changeStatus($numCht,$status);
-header('Location: index.php');
+header('Location: ../../adm/index.php');
 
  ?>

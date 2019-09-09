@@ -1,5 +1,5 @@
 <?php
-include "variaveis.inc.php";
+require __DIR__."/../inc/config.php";
 
 $connection = mysqli_connect($servername,$adm_user,$adm_passwd,$db) or die("deu ruim");
 if(!$connection){

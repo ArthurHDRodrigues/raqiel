@@ -3,9 +3,9 @@
 /*
 Pagina responsavel por receber o questionario do index.php e em seguida construir o chamado. Caso tudo esteja OK o submete.
 */
+require "../mysqlAPI/chtCommands/submitCht.php";
 
-include "./inc/mysql_stuff.php";
-include "./inc/classes.php"; //para new cht
+include "../../Classes/cht/chtModel.php"; //para new cht
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];

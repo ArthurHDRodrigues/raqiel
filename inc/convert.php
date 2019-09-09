@@ -17,7 +17,7 @@ else{
 $sql = "DELETE FROM ".$db_cht;
 $sql_result = mysqli_query($connection, $sql) or die ("Nao foi possivel extrair os dados");
 
-$sql = "SELECT * FROM tbchamado WHERE status != '4'";
+$sql = "SELECT * FROM tbchamado WHERE status = '3'";
 $sql_result = mysqli_query($conn, $sql) or die ("Nao foi possivel extrair os dados");
 
 $chts = array();
@@ -34,11 +34,11 @@ while($row = mysqli_fetch_row($sql_result)){
   $status = $row[9];
   $setor = $row[10];
   $patrimonio = $row[11];
-  $data = $row[11];
-  $hora = $row[12];
-  $obs = $row[13]; #inutil
-  $ausencia = $row[14];
-  $hr_atendimento = $row[15];
+  $data = $row[12];#inutil
+  $hora = $row[13];
+  $obs = $row[14]; #inutil
+  $ausencia = $row[15];
+  $hr_atendimento = $row[16];
 
   if($ausencia == "sim"){
     $ausencia = 1;
@@ -46,9 +46,10 @@ while($row = mysqli_fetch_row($sql_result)){
   else{
     $ausencia = 0;
   }
+
   $tipo = 0;
-  if ($note){$tipo = 1;}
-  if ($tel){ $tipo = 2;}
+  if ($note == 1){$tipo = 1;}
+  if ($tel == 1){ $tipo = 2;}
   if ( $note AND $tel ){ $tipo = 3;}
   switch ($status) {
     case '0':
@@ -81,8 +82,8 @@ while($row = mysqli_fetch_row($sql_result)){
   $hr_atendimento = str_replace($forbitten, '',$hr_atendimento);
   $sala = str_replace($forbitten, '',$sala);
 
+  $chtVisual = new chtVisual;
   $cht = new chtModel(array($id,$nome,$email,$ramal,$sala,$setor,$sol,$tipo,$status,'data',$patrimonio,$ausencia,$hr_atendimento));
-  #array_push($chts,$chamado);
-  $sql = "INSERT INTO ". $db_cht ." VALUES (DEFAULT,'$cht->nome','$cht->email','$cht->ramal','$cht->sala','$cht->usrsetor','$cht->sol','$cht->tipo','$cht->status','','$cht->patrimonio','$cht->atendimento_na_ausencia','$cht->horario_preferencial')";
+  $sql = "INSERT INTO ". $db_cht ." VALUES (DEFAULT,'$cht->nome','$cht->email','$cht->ramal','$cht->sala','$cht->usrsetor','$cht->sol','$cht->tipo','$cht->status',STR_TO_DATE('$hora','%Y-%m-%d %H:%i:%s'),'$cht->patrimonio','$cht->atendimento_na_ausencia','$cht->horario_preferencial')";
   mysqli_query($connection, $sql) or die ("$sql");
 }

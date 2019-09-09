@@ -22,7 +22,7 @@ o devido atendimento. O Suporte Técnico da Seção Técnica de Informática ofe
     </div>
 
     <div class="container">
-    <form method='POST' action= 'sendCht.php'>
+    <form method='POST' action= './backEnd/formActions/sendCht.php'>
       <h3>Seus dados</h3>
       <div class="form-group">
         <label for="Nome">Nome:</label>
@@ -61,7 +61,7 @@ o devido atendimento. O Suporte Técnico da Seção Técnica de Informática ofe
       <h3>Dados do seu chamado</h3>
       <div class="form-group">
         <label for="Patrimonio">Nº de patrimônio:</label>
-        <input  name ='patrimonio' type='number'></input>
+        <input  name ='patrimonio' type='number' min="0"></input>
       </div>
 
       <div class="custom-control custom-checkbox custom-control-inline" >
