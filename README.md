@@ -12,11 +12,11 @@ raqiel é um sistema livre de chamados técnicos.
 
 Após fazer essa sessão lembre de editar o arquivo "inc/config.php", cada variável dele esta entre parenteses abaixo;
 
-1a. Crie uma conta de usuario ( '$adm_user' ) com privilégios no mysql e senha ( '$adm_passwd' );
+1. Crie uma conta de usuario ( '$adm_user' ) com privilégios no mysql e senha ( '$adm_passwd' );
 
-1b. Crie um banco de dados ( '$db' );
+2. Crie um banco de dados ( '$db' );
 
-1c. Crie 3 tabelas, uma para chamados ( '$db_cht' ), uma para funcionario ( '$db_func' ) e a terceira para os comentario( '$db_comment' );
+3. Crie 3 tabelas, uma para chamados ( '$db_cht' ), uma para funcionario ( '$db_func' ) e a terceira para os comentario( '$db_comment' );
 
 A estrutura detalhada de cada tabela pode ser consultada no arquivo "documentation/Estrutura_do_Banco_de_Dados.txt";
 
@@ -52,15 +52,15 @@ comment TEXT,
 PRIMARY KEY ( id )
 );'
 
-1.3) Renomeie '$servername' para o nome/IP do seu servidor;
+4. Renomeie '$servername' para o nome/IP do seu servidor;
 
-1.4) Adicione uma entrada no $db_func para fazer o primeiro login:
+5. Adicione uma entrada no $db_func para fazer o primeiro login:
 'INSERT INTO tbfunc VALUES('root',md5('batata'));'
 
-2) Setup PHP
+### Setup PHP
 
-2.0) Habilite o modo de debug no arquivo "/etc/php/7.3/apache2/php.ini" para caso algo dê errado;
-2.1) Instale a biblioteca mysqli;
+0. Habilite o modo de debug no arquivo "/etc/php/7.3/apache2/php.ini" para caso algo dê errado;
+1. Instale a biblioteca mysqli;
     'sudo apt-get install php-mysqli'
 
 Pronto! Tudo deve estar funcionando!
