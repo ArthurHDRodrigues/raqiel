@@ -6,17 +6,17 @@ raqiel é um sistema livre de chamados técnicos.
 
 ## Passo-a-passo para implementar o sistema:
 
-0) Garanta que sua maquina tenha apache2;
+0. Garanta que sua maquina tenha apache2;
 
-1) Setup mysql
+1. Setup mysql
 
 Após fazer essa sessão lembre de editar o arquivo "inc/config.php", cada variável dele esta entre parenteses abaixo;
 
-1.0) Crie uma conta de usuario ( '$adm_user' ) com privilégios no mysql e senha ( '$adm_passwd' );
+1a. Crie uma conta de usuario ( '$adm_user' ) com privilégios no mysql e senha ( '$adm_passwd' );
 
-1.1) Crie um banco de dados ( '$db' );
+1b. Crie um banco de dados ( '$db' );
 
-1.2) Crie 3 tabelas, uma para chamados ( '$db_cht' ), uma para funcionario ( '$db_func' ) e a terceira para os comentario( '$db_comment' );
+1c. Crie 3 tabelas, uma para chamados ( '$db_cht' ), uma para funcionario ( '$db_func' ) e a terceira para os comentario( '$db_comment' );
 
 A estrutura detalhada de cada tabela pode ser consultada no arquivo "documentation/Estrutura_do_Banco_de_Dados.txt";
 
