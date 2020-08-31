@@ -69,8 +69,8 @@ PRIMARY KEY ( id )
 
 ### Setup PHP
 
-0. Habilite o modo de debug no arquivo "/etc/php/7.3/apache2/php.ini" para caso algo dê errado;
-1. Instale a biblioteca mysqli;
+1. Habilite o modo de debug no arquivo "/etc/php/7.3/apache2/php.ini" para caso algo dê errado;
+2. Instale a biblioteca mysqli;
     >sudo apt-get install php-mysqli
 
 Pronto! Tudo deve estar funcionando!
