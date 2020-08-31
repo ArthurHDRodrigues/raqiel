@@ -2,11 +2,17 @@
 
 ## Descrição
 
-raqiel é um sistema livre de chamados técnicos.
+raqiel é um sistema livre de chamados técnicos, implementado em PHP e MySQL.
 
-## Passo-a-passo para implementar o sistema:
+## Passo-a-passo para implementar o sistema
 
 ### Garanta que sua maquina tenha apache2;
+
+Rode
+
+>'apt list --installed | grep apache2'
+
+para verificar se o pacote está instalado, em caso negativo rode 'apt install apache2'.
 
 ### Setup mysql
 
