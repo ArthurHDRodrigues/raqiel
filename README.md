@@ -6,9 +6,9 @@ raqiel é um sistema livre de chamados técnicos.
 
 ## Passo-a-passo para implementar o sistema:
 
-0. Garanta que sua maquina tenha apache2;
+### Garanta que sua maquina tenha apache2;
 
-1. Setup mysql
+### Setup mysql
 
 Após fazer essa sessão lembre de editar o arquivo "inc/config.php", cada variável dele esta entre parenteses abaixo;
 
