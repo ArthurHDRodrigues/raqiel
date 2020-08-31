@@ -38,12 +38,14 @@ atendimento_na_ausencia TINYINT(1),
 horario_preferencial VARCHAR(255),
 PRIMARY KEY ( numero )
 );'
+
 'CREATE TABLE tbfunc(
 id INT AUTO_INCREMENT,
 nome VARCHAR(30),
 senha VARCHAR(32),
 PRIMARY KEY ( id )
 );'
+
 'CREATE TABLE tbcomment(
 id INT AUTO_INCREMENT,
 numCht SMALLINT(10),
