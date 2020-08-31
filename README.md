@@ -8,11 +8,13 @@ raqiel é um sistema livre de chamados técnicos, implementado em PHP e MySQL.
 
 ### Garanta que sua maquina tenha apache2;
 
-Rode
+Para verificar se o pacote está instalado, rode
 
->'apt list --installed | grep apache2'
+>apt list --installed | grep apache2
 
-para verificar se o pacote está instalado, em caso negativo rode 'apt install apache2'.
+Em caso negativo rode
+
+>apt install apache2
 
 ### Setup mysql
 
@@ -28,7 +30,7 @@ A estrutura detalhada de cada tabela pode ser consultada no arquivo "documentati
 
 Os comandos para criar cada tabela são:
 
-'CREATE TABLE tbchamado(
+>CREATE TABLE tbchamado(
 numero INT AUTO_INCREMENT,
 nome VARCHAR(30),
 email VARCHAR(40),
@@ -43,32 +45,32 @@ patrimonio VARCHAR(8),
 atendimento_na_ausencia TINYINT(1),
 horario_preferencial VARCHAR(255),
 PRIMARY KEY ( numero )
-);'
+);
 
-'CREATE TABLE tbfunc(
+>CREATE TABLE tbfunc(
 id INT AUTO_INCREMENT,
 nome VARCHAR(30),
 senha VARCHAR(32),
 PRIMARY KEY ( id )
-);'
+);
 
-'CREATE TABLE tbcomment(
+>CREATE TABLE tbcomment(
 id INT AUTO_INCREMENT,
 numCht SMALLINT(10),
 user VARCHAR(30),
 comment TEXT,
 PRIMARY KEY ( id )
-);'
+);
 
 4. Renomeie '$servername' para o nome/IP do seu servidor;
 
 5. Adicione uma entrada no $db_func para fazer o primeiro login:
-'INSERT INTO tbfunc VALUES('root',md5('batata'));'
+>INSERT INTO tbfunc VALUES('root',md5('batata'));
 
 ### Setup PHP
 
 0. Habilite o modo de debug no arquivo "/etc/php/7.3/apache2/php.ini" para caso algo dê errado;
 1. Instale a biblioteca mysqli;
-    'sudo apt-get install php-mysqli'
+    >sudo apt-get install php-mysqli
 
 Pronto! Tudo deve estar funcionando!
